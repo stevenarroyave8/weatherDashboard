@@ -1,67 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Weather Dashboard</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="./assets/css/style.css>"/>
     </head>
     
     <body>   
-        <div class="container-fluid">
-            <div class="card">
-              <div class="card-body text-center bg-dark text-white">
-                <h1>Weather Dashboard</h1>
-            </div>
-        </div>
-        
-        <div class="container">
+        <h1>Weather Dashboard</h1>
+        <div class="container-fluid mainCon">
             <div class="row">
-              <div class="col">
-                <div class="card-body text-center">
-                  <div class="card mb-3">
-                    <div class="card-body bg-light">
-                      <h5 class="card-subtitle mb-2 text-muted">Search For A City</h5>
-                      <div class="input-group mb-3">
-                        <input type="text" id="searchInput" class="form-control search-input" placeholder="Enter City Name">
-                        <div class="input-group-append">
-                          <button id="searchButton" class="btn btn-outline-secondary bg-primary search-button" type="button">
-                            <i class="fas fa-search"></i>
-                          </button>
+                <div class="col-12 col-md-3 col-xl-3 colOne">
+                    <label>Search for a City:</label>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control textVal" placeholder="Miami...">
+                        <div class="input-group-append btnPar">
+                            <button class="btn btn-primary search" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
-                      <ul class="list-group"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="col mt-4 mr-5">
-            <div class="card current-card pb-2 pt-1">
-              <h5 class="card-title mt-2 text-center">Current Forecast</h5>
-            </div>
-          </div>
-        </div>
 
-        <div class="row">
-            <div class="col mt-4">
-              <div class="card pb-5 five-day-card pl-5">
-                <h5 class="card-title mt-2 mr-5">5-Day Forecast</h5>
-                <div class="row">
-                  <div class="col five-day-one"></div>
+                    <div class="container cityHist"></div>
+
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-        
-        
-        
-        
-        
-        
+                <div class="col-12 col-md-9 col-xl-9 colTwo">
+
+                    <div class="row today">
+
+                        <div class="card bg-light mb-3 " style="max-width: 400px;">
+                            <h2 class="card-header cardTodayCityName"></h2>
+                            <h3 class="card-header cardTodayDate"></h3>
+                            <img class="icons"/>
+                            <div class="card-body cardBodyToday"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="row fiveForecast"></div>
+
+                </div>
         
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
