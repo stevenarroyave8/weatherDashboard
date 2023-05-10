@@ -69,7 +69,7 @@ function getCurrentWeather(searchInput) {
    });
  }
  function getLatAndLon (searchInput) {
-   const urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&Appid=${apiKey}&units=imperial`;
+   const urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&Appid=${apiKey}&units=imperial`; 
  
    $.ajax({
      url: urlCurrent,
@@ -92,3 +92,37 @@ function getCurrentWeather(searchInput) {
      const day = [0, 8, 16, 24, 32];
      const fiveDayDiv = $(".five-day-one").addClass("card-text");
      fiveDayDiv.empty();
+
+      // Loop through each day and add weather data to the page
+    $(day).each(function (i) {
+        const FiveDayTimeUTC1 = new Date(response.list[day[i]].dt * 1000);
+        const date = FiveDayTimeUTC1.toLocaleDateString("en-US");
+        console.log (day[i])
+  
+  
+        const forecast = $("<div>").addClass("fiveDayColor")
+          .append($("<p>").text(date))
+          .append($("<img>").attr("src",`https://openweathermap.org/img/wn/${response.list[day[i]].weather[0].icon}@2x.png`))
+          .append($("<p>").text(`Temperature: ${((response.list[day[i]].main.temp - 273.15) * 9/5 + 32).toFixed(1)}°F`))
+            .append($("<p>").text(`Humidity: ${response.list[day[i]].main.humidity}%`));
+  
+    
+         $(".five-day-one").append(forecast);   
+        });
+  
+    });
+  }
+  
+
+// add click event listener to search button
+  searchButton.on("click", function () {
+    
+// get search input value
+    var searchInput = $("#searchInput").val().trim();
+  
+// call functions to get weather data
+    getCurrentWeather(searchInput);
+    
+//getFiveDayForecast(searchInput);
+    getLatAndLon (searchInput)
+  });
