@@ -50,3 +50,45 @@ function getCurrentWeather(searchInput) {
 // Add wind speed
     const windSpeed = $("<p>").text(`Wind Speed: ${response.wind.speed}`);
     currentBody.append(windSpeed);
+
+// Get UV index data
+     const urlUV = `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${response.coord.lat}&lon=${response.coord.lon}`;
+
+     $.ajax({
+       url: urlUV,
+       method: "GET",
+     }).then(function (response) {
+
+    const uvIndex = $("<p>").text(`UV Index: ${response.value}`).addClass("card-text UV");
+    currentName.append(uvIndex);
+ 
+// Add current weather card to the page
+       currentCard.append(currentName);
+       $(".currentCard").empty().append(currentCard);
+     });
+   });
+ }
+ function getLatAndLon (searchInput) {
+   const urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&Appid=${apiKey}&units=imperial`;
+ 
+   $.ajax({
+     url: urlCurrent,
+     method: "GET",
+   }).then(function (response) {
+     lat= response.coord.lat;
+     lon= response.coord.lon;
+     getFiveDayForecast (lat,lon)
+   })
+ }
+ 
+// Function to get 5-day forecast data
+ function getFiveDayForecast(lat,lon) {
+   const urlFiveDay = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+ console.log (urlFiveDay)
+   $.ajax({
+     url: urlFiveDay,
+     method: "GET",
+   }).then(function (response) {
+     const day = [0, 8, 16, 24, 32];
+     const fiveDayDiv = $(".five-day-one").addClass("card-text");
+     fiveDayDiv.empty();
