@@ -1,3 +1,4 @@
+![challenge6 ss](https://github.com/stevenarroyave8/weatherDashboard/assets/128537787/3310c633-7940-4565-ab53-74c1833e34a7)
 # weatherDashboard
 This weeks challenge required to create a weather dashboard while integrating third party APIs.
 ## About
