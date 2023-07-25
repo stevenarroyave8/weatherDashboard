@@ -1,21 +1,12 @@
-/* styles for Li */
-li {
-    border-bottom: 1px solid lightgray;
-    text-align: left;
-    padding-left: 10px;
+.searchArea{
+    height: 900px;
 }
-/* styles for card titles  */
-.card-title {
-    font-size: 20px;
+.fiveDayCast{
+    background-color: darkblue;
 }
-
-/* styles for five day forecast colors */
-.fiveDayColor {
-    padding: 20px;
-    background-color: #1E90FF;
-    color: white;
-    float: left;
-    margin: 10px;
-    border: 1px solid lightgray;
-
+h3{
+    font-weight: lighter;
+}
+.hide{
+    display: none;
 }
